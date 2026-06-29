@@ -1,0 +1,25 @@
+class Solution:
+
+    def isBalanced(self, root):
+
+        def height(root):
+
+            if root is None:
+                return 0
+
+            left = height(root.left)
+
+            if left == -1:
+                return -1
+
+            right = height(root.right)
+
+            if right == -1:
+                return -1
+
+            if abs(left-right) > 1:
+                return -1
+
+            return 1 + max(left,right)
+
+        return height(root) != -1
